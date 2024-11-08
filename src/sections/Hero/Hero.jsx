@@ -10,6 +10,8 @@ import linkedinLight from '../../assets/linkedin-light.svg';
 import linkedinDark from '../../assets/linkedin-dark.svg';
 import CV from '../../assets/cv.pdf';
 import { useTheme } from '../../common/ThemeContext';
+import { useEffect } from 'react';
+import { addScrollAnimation } from '../../utils/scrollAnimation';
 
 function Hero() {
   const { theme, toggleTheme } = useTheme();
@@ -19,36 +21,38 @@ function Hero() {
   const githubIcon = theme === 'light' ? githubLight : githubDark;
   const linkedinIcon = theme === 'light' ? linkedinLight : linkedinDark;
 
+  useEffect(() => {
+    addScrollAnimation();
+  }, []);
+
   return (
-    <section id="hero" className={styles.container}>
+    <section id="hero" className={`${styles.container} animate-fadeInUp`}>
       <div className={styles.colorModeContainer}>
         <img
           src={heroImg}
-          className={styles.hero}
-          alt="Profile picture of Harris Johnsen"
+          className={`${styles.hero} hover-scale`}
+          alt="Profile picture"
         />
         <img
-          className={styles.colorMode}
+          className={`${styles.colorMode} button-hover`}
           src={themeIcon}
           alt="Color mode icon"
           onClick={toggleTheme}
         />
       </div>
-      <div className={styles.info}>
-        <h1>
-          Harris
+      <div className={`${styles.info} scroll-animate`}>
+        <h1 className="text-gradient">
+          Pranshu
           <br />
-          Johnsen
+          Gupta
         </h1>
         <h2>Frontend Developer</h2>
         <span>
-          <a href="https://twitter.com/" target="_blank">
-            <img src={twitterIcon} alt="Twitter icon" />
-          </a>
-          <a href="https://github.com/" target="_blank">
+          
+          <a href="https://github.com/pranshuguptaa" target="_blank">
             <img src={githubIcon} alt="Github icon" />
           </a>
-          <a href="https://linkedin.com/" target="_blank">
+          <a href="https://www.linkedin.com/in/pranshu-gupta-3166372b4/" target="_blank">
             <img src={linkedinIcon} alt="Linkedin icon" />
           </a>
         </span>

@@ -1,0 +1,110 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.educationContainer {
+  display: grid;
+  gap: 40px;
+}
+
+.educationBox,
+.achievementsBox {
+  background: var(--background-color);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  border: 1px solid var(--text-color);
+}
+
+.achievementsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.achievementsBox {
+  flex: 1;
+}
+
+.educationBox h2,
+.achievementsBox h2 {
+  color: var(--btn-color);
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.eduItem {
+  margin-bottom: 35px;
+  padding-left: 20px;
+  border-left: 3px solid var(--btn-color);
+}
+
+.eduItem:last-child {
+  margin-bottom: 0;
+}
+
+.eduItem h3 {
+  color: var(--text-color);
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.eduItem p {
+  color: var(--text-color);
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.achievementsList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.achievementsList li {
+  color: var(--text-color);
+  margin-bottom: 15px;
+  padding-left: 25px;
+  position: relative;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.achievementsList li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--btn-color);
+  font-size: 18px;
+}
+
+@media (width >= 768px) {
+  .educationContainer {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+}
+
+.educationBox,
+.achievementsBox {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 

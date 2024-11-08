@@ -8,32 +8,24 @@ import ProjectCard from '../../common/ProjectCard';
 function Projects() {
   return (
     <section id="projects" className={styles.container}>
-      <h1 className="sectionTitle">Projects</h1>
-      <div className={styles.projectsContainer}>
-        <ProjectCard
-          src={viberr}
-          link="https://github.com/Ade-mir/company-landing-page-2"
-          h3="Viberr"
-          p="Streaming App"
-        />
-        <ProjectCard
-          src={freshBurger}
-          link="https://github.com/Ade-mir/company-landing-page-2"
-          h3="Fresh Burger"
-          p="Hamburger Restaurant"
-        />
-        <ProjectCard
-          src={hipsster}
-          link="https://github.com/Ade-mir/company-landing-page-2"
-          h3="Hipsster"
-          p="Glasses Shop"
-        />
-        <ProjectCard
-          src={fitLift}
-          link="https://github.com/Ade-mir/company-landing-page-2"
-          h3="FitLift"
-          p="Fitness App"
-        />
+      <h1 className="sectionTitle text-gradient">Projects</h1>
+      <div className={`${styles.projectsContainer} animate-fadeInUp`}>
+        <div className="hover-scale">
+          <ProjectCard
+            src={viberr}
+            link="https://github.com/pranshuguptaa/GAME-SELECTOR"
+            h3="Game Selector"
+            p="Gaming Website"
+          />
+        </div>
+        <div className="hover-scale">
+          <ProjectCard
+            src={freshBurger}
+            link="https://github.com/pranshuguptaa/LIBRARY_MANAGEMENT"
+            h3="Library Management"
+            p="Library Management System"
+          />
+        </div>
       </div>
     </section>
   );

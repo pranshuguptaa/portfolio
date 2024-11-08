@@ -106,3 +106,396 @@ p {
     }
   }
 }
+
+/* Add these styles after your existing CSS */
+
+body {
+  background: var(--background-color);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 25px 25px, var(--text-color) 1px, transparent 0),
+    radial-gradient(circle at 75px 75px, var(--text-color) 1px, transparent 0);
+  background-size: 100px 100px;
+  opacity: 0.1;
+  z-index: -1;
+  animation: twinkle 8s infinite;
+}
+
+/* Add some twinkling animation */
+@keyframes twinkle {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+/* For a more dynamic star pattern, add this additional layer */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 50px 50px, var(--text-color) 1px, transparent 0),
+    radial-gradient(circle at 100px 100px, var(--text-color) 1px, transparent 0);
+  background-size: 150px 150px;
+  opacity: 0.1;
+  z-index: -1;
+  animation: twinkle 6s infinite reverse;
+}
+
+/* Optional: Add shooting stars */
+@keyframes shootingStars {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-500px) translateY(500px);
+    opacity: 0;
+  }
+}
+
+.shooting-star {
+  position: fixed;
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--btn-color), transparent);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.shooting-star:nth-child(1) {
+  top: 10%;
+  right: -100px;
+  animation: shootingStars 4s infinite;
+  animation-delay: 0s;
+}
+
+.shooting-star:nth-child(2) {
+  top: 30%;
+  right: -100px;
+  animation: shootingStars 4s infinite;
+  animation-delay: 2s;
+}
+
+.shooting-star:nth-child(3) {
+  top: 50%;
+  right: -100px;
+  animation: shootingStars 4s infinite;
+  animation-delay: 3s;
+}
+
+/* Light mode background (colorful dots) */
+body {
+  background: var(--background-color);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Colorful dots for light mode */
+[data-theme='light'] body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 25px 25px, #FF0066 3px, transparent 0),
+    radial-gradient(circle at 75px 75px, #00CC99 3px, transparent 0),
+    radial-gradient(circle at 50px 50px, #0099FF 3px, transparent 0),
+    radial-gradient(circle at 100px 100px, #FF9900 3px, transparent 0);
+  background-size: 100px 100px;
+  opacity: 0.2;
+  z-index: -1;
+  animation: floatDots 10s infinite linear;
+}
+
+/* Star pattern for dark mode */
+[data-theme='dark'] body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 25px 25px, var(--text-color) 1px, transparent 0),
+    radial-gradient(circle at 75px 75px, var(--text-color) 1px, transparent 0);
+  background-size: 100px 100px;
+  opacity: 0.1;
+  z-index: -1;
+  animation: twinkle 8s infinite;
+}
+
+/* Second layer of stars for dark mode only */
+[data-theme='dark'] body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 50px 50px, var(--text-color) 1px, transparent 0),
+    radial-gradient(circle at 100px 100px, var(--text-color) 1px, transparent 0);
+  background-size: 150px 150px;
+  opacity: 0.1;
+  z-index: -1;
+  animation: twinkle 6s infinite reverse;
+}
+
+/* Hide second layer in light mode */
+[data-theme='light'] body::after {
+  display: none;
+}
+
+/* Animations */
+@keyframes twinkle {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+@keyframes floatDots {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
+}
+
+/* Shooting stars (dark mode only) */
+.shooting-star {
+  position: fixed;
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--btn-color), transparent);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  display: none; /* Hidden by default */
+}
+
+/* Only show shooting stars in dark mode */
+[data-theme='dark'] .shooting-star {
+  display: block;
+}
+
+.shooting-star:nth-child(1) {
+  top: 10%;
+  right: -100px;
+  animation: shootingStars 4s infinite;
+  animation-delay: 0s;
+}
+
+.shooting-star:nth-child(2) {
+  top: 30%;
+  right: -100px;
+  animation: shootingStars 4s infinite;
+  animation-delay: 2s;
+}
+
+.shooting-star:nth-child(3) {
+  top: 50%;
+  right: -100px;
+  animation: shootingStars 4s infinite;
+  animation-delay: 3s;
+}
+
+@keyframes shootingStars {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-500px) translateY(500px);
+    opacity: 0;
+  }
+}
+
+/* Add these animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Add animation classes */
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.6s ease-out;
+}
+
+.animate-fadeInRight {
+  animation: fadeInRight 0.6s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.6s ease-out;
+}
+
+/* Add hover animations */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* Add these to your existing sections */
+.sectionTitle {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Update your sections */
+#hero {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+#education .educationBox {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+#education .achievementsContainer {
+  animation: fadeInRight 0.8s ease-out;
+}
+
+#projects .projectsContainer {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+#skills .skillList {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+#contact form {
+  animation: scaleIn 0.8s ease-out;
+}
+
+/* Keep your existing styles and add these new animations */
+
+/* Text Gradient Animation */
+.text-gradient {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Button Hover Effects */
+.button-hover {
+  transition: all 0.3s ease;
+}
+
+.button-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Page Transitions */
+.page-transition {
+  transition: opacity 0.3s ease;
+}
+
+.page-enter {
+  opacity: 0;
+}
+
+.page-enter-active {
+  opacity: 1;
+}
